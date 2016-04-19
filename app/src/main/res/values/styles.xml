@@ -1,0 +1,69 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="Item_Group_base">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+
+    </style>
+
+    <style name="Item_Group_selector_NoPadding" parent="@style/Item_Group_base">
+        <item name="android:background">@drawable/selector_white</item>
+    </style>
+
+    <style name="Item_Group_selector_withpadding" parent="@style/Item_Group_selector_NoPadding">
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/selector_white</item>
+    </style>
+
+    <style name="Text_Base">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">@color/font_color</item>
+    </style>
+
+    <style name="Watetr_title_style" parent="Text_Base">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:drawablePadding">@dimen/view_padding_5</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+    </style>
+
+    <style name="Watetr_title_right_style" parent="Text_Base">
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textColor">@color/font_color_gray</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="Item_Grop_selector_Stoke" parent="Item_Group_selector_withpadding">
+        <item name="android:background">@drawable/selector_white_stoke</item>
+    </style>
+
+    <style name="Image_Base">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:contentDescription">@string/app_name</item>
+    </style>
+
+</resources>

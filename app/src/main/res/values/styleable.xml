@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!--自定义View-->
+    <declare-styleable name="WaterView">
+        <attr name="left_title_drawable" format="reference"></attr>
+        <attr name="right_title_drawable" format="reference"></attr>
+        <attr name="left_tip" format="string"></attr>
+        <attr name="left_title" format="string"></attr>
+        <attr name="right_title" format="string"></attr>
+        <attr name="left_tip_color" format="color"></attr>
+        <attr name="right_text_color" format="color"></attr>
+        <attr name="right_icon_visable" format="boolean"></attr>
+        <attr name="radius_padding" format="dimension"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/lin_layout"
+    style="@style/Item_Grop_selector_Stoke"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/view_padding_5"
+    >
+
+
+    <ImageView
+        android:id="@+id/iv_left_icon"
+        style="@style/Image_Base"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/tv_left"
+        style="@style/Watetr_title_style"
+        android:layout_marginLeft="@dimen/view_margin_10"
+        android:layout_marginStart="@dimen/view_margin_10"
+        />
+
+    <TextView
+        android:id="@+id/tv_left_tip"
+        style="@style/Watetr_title_style"
+        android:layout_marginLeft="@dimen/view_margin_10"
+        android:layout_marginStart="@dimen/view_margin_10"
+        android:padding="@dimen/view_padding_3"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_12"
+        />
+
+    <View
+        android:id="@+id/vi_view"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:visibility="gone"/>
+
+
+    <TextView
+        android:id="@+id/tv_right"
+        style="@style/Watetr_title_right_style"
+        android:drawableEnd="@mipmap/ic_action_back_water"
+        android:drawableRight="@mipmap/ic_action_back_water"
+        />
+
+</LinearLayout>
