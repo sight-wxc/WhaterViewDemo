@@ -106,6 +106,7 @@ public class WaterView extends LinearLayout
             mParentView.setPadding(padding, padding, padding, padding);
         }
         attrubite.recycle();
+
     }
 
 
