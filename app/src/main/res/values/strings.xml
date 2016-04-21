@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">WhaterViewDemo</string>
     <string name="action_settings">Settings</string>
+
+    <string name="data">0946-,-2146,0946-2146,0946-2146,0946-2146,-,-,-,-,-</string>
+
+
 </resources>

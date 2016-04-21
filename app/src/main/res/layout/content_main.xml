@@ -39,8 +39,22 @@
         app:left_tip="这是副标题"
         app:left_tip_color="@color/colorPrimary"
         app:left_title="这是标题"
+        app:left_title_drawable="@mipmap/ic_icon_server"
         app:right_icon_visable="true"
         app:right_title="这是右边的tip"
+        />
+
+
+    <com.sight.water.whaterviewdemo.WaterLinearLayout
+        android:id="@+id/vi_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:icon_src="@mipmap/icon_blue_unselected_grey"
+        app:line_color="@color/line_gray"
+        app:line_dynamic_dimen="25dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/vi_water"
+        android:layout_marginTop="@dimen/view_margin_20"
         />
 
 

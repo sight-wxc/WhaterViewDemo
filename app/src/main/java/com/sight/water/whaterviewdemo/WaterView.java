@@ -18,30 +18,49 @@ import android.widget.TextView;
 
 public class WaterView extends LinearLayout
 {
+    /**
+     * 左边的标题
+     */
+    private TextView mTvLeftTilte;
+    /**
+     * 右边的标题
+     */
+    private TextView mTvRightTitle;
+    /**
+     * 左边使用Imagview考虑更加方便
+     */
+    private ImageView mIvLeftIcon;
+    /**
+     * 左边的副标题
+     */
+    private TextView mTvLeftTip;
+    /**
+     * 可能在左边标题会设置drawable
+     */
+    private View view;
 
-    TextView mTvLeftTilte;
-    TextView mTvRightTitle;
-    ImageView mIvLeftIcon;
-    TextView mTvLeftTip;
-    View view;
+    /**
+     * 是否显示右边的返回按钮
+     */
+    private boolean isShowRightBack;
 
     public WaterView(Context context)
     {
-        super(context);
+        this(context, null, 0);
 
     }
 
     public WaterView(Context context, AttributeSet attrs)
     {
-        super(context, attrs);
-        initView(context, attrs);
+        this(context, attrs, 0);
+
     }
 
 
     public WaterView(Context context, AttributeSet attrs, int defStyleAttr)
     {
         super(context, attrs, defStyleAttr);
-
+        initView(context, attrs);
     }
 
     private void initView(Context context, AttributeSet attributeSet)
@@ -59,6 +78,7 @@ public class WaterView extends LinearLayout
         int leftResID = attrubite.getResourceId(R.styleable.WaterView_left_title_drawable, 0);
         int rightResID = attrubite.getResourceId(R.styleable.WaterView_right_title_drawable, 0);
         if (leftResID != 0) {
+            setLeftIcon(leftResID);
         }
         if (rightResID != 0)
             setRightDrawable(rightResID);
@@ -75,7 +95,7 @@ public class WaterView extends LinearLayout
         if (leftBack != -1) {
             setLeftBackground(leftBack);
         }
-        boolean isShowRightBack = attrubite.getBoolean(R.styleable.WaterView_right_icon_visable, true);
+        isShowRightBack = attrubite.getBoolean(R.styleable.WaterView_right_icon_visable, true);
         if (!isShowRightBack)
             setRightDrawableNull();
         int titlecolor = attrubite.getColor(R.styleable.WaterView_right_text_color, -1);
@@ -134,10 +154,10 @@ public class WaterView extends LinearLayout
      */
     public void setLeftIcon(int id)
     {
-        if (id!=0){
+        if (id != 0) {
             mIvLeftIcon.setVisibility(View.VISIBLE);
             mIvLeftIcon.setBackgroundResource(id);
-        }else{
+        } else {
             mIvLeftIcon.setVisibility(View.GONE);
         }
 
@@ -153,18 +173,35 @@ public class WaterView extends LinearLayout
      */
     public void setRightIcon(String text, int leftID, int color, OnClickListener onClickListener, Object tag)
     {
-        view.setVisibility(View.VISIBLE);
         LinearLayout.LayoutParams params = (LayoutParams) mTvRightTitle.getLayoutParams();
-        params.width = LayoutParams.WRAP_CONTENT;
-        params.weight = 0;
-        params.gravity = Gravity.RIGHT;
-        mTvRightTitle.setLayoutParams(params);
-        mTvRightTitle.setTextColor(color);
-        mTvRightTitle.setText(text);
-        mTvRightTitle.setOnClickListener(onClickListener);
-        mTvRightTitle.setTag(tag);
-        ResourcesCompat.setLeftDrawable(mTvRightTitle, leftID);
+        if (leftID != 0) {
+            view.setVisibility(View.VISIBLE);
+            params.width = LayoutParams.WRAP_CONTENT;
+            params.weight = 0;
+            params.gravity = Gravity.RIGHT;
+            mTvRightTitle.setLayoutParams(params);
+            mTvRightTitle.setTextColor(color);
+            mTvRightTitle.setText(text);
+            mTvRightTitle.setOnClickListener(onClickListener);
+            mTvRightTitle.setTag(tag);
+            ResourcesCompat.setLeftDrawable(mTvRightTitle, leftID);
+        } else {
+            view.setVisibility(View.GONE);
+            params.weight = 1;
+            params.width = 0;
+            mTvRightTitle.setLayoutParams(params);
+            ResourcesCompat.setLeftDrawable(mTvRightTitle, null);
+        }
 
+    }
+
+    /**
+     * 右边的Icon 设置为空
+     */
+    public void setRightIconNull()
+    {
+        setRightIcon("", 0, 0, null, null);
+        ResourcesCompat.setRightDrawable(mTvRightTitle, isShowRightBack ? R.mipmap.ic_action_back_water : R.mipmap.ic_action_back_water_null);
     }
 
 
