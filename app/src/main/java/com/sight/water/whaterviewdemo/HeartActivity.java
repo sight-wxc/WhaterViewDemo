@@ -12,6 +12,8 @@ import com.sight.water.whaterviewdemo.view.HeartView;
 public class HeartActivity extends AppCompatActivity {
 
 
+
+
     HeartView heartView;
 
     @Override

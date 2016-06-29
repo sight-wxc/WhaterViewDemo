@@ -28,6 +28,8 @@ import java.util.Random;
 public class HeartView extends View {
 
 
+
+
     public final String TAG = HeartView.class.getSimpleName();
 
     /**
