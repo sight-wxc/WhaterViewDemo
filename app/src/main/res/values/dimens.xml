@@ -4,11 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
-
-
-
-
-
+    <dimen name="aciton_height">55dp</dimen>
 
 
     <dimen name="text_size_40">40sp</dimen>
@@ -86,7 +82,6 @@
     <dimen name="view_padding_20">20dp</dimen>
     <dimen name="view_padding_25">25dp</dimen>
     <dimen name="view_padding_30">30dp</dimen>
-
 
 
 </resources>

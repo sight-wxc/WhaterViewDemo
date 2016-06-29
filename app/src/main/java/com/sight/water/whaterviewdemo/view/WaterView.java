@@ -1,4 +1,4 @@
-package com.sight.water.whaterviewdemo;
+package com.sight.water.whaterviewdemo.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.sight.water.whaterviewdemo.R;
+import com.sight.water.whaterviewdemo.util.ResourcesCompat;
 
 /**
  * Created by Sight on 2016/4/6.

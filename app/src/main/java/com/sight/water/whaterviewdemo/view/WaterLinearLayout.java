@@ -1,4 +1,4 @@
-package com.sight.water.whaterviewdemo;
+package com.sight.water.whaterviewdemo.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,6 +9,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.LinearLayout;
+
+import com.sight.water.whaterviewdemo.R;
+import com.sight.water.whaterviewdemo.util.ResourcesCompat;
 
 
 /**

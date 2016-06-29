@@ -65,10 +65,12 @@
         <item name="android:scaleType">centerCrop</item>
         <item name="android:contentDescription">@string/app_name</item>
     </style>
+
     <style name="Item_Text_Base" parent="@style/Text_Base">
         <item name="android:layout_width">match_parent</item>
         <item name="android:gravity">left</item>
     </style>
+
     <style name="Item_Text_Grey_nomal" parent="@style/Text_Base">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

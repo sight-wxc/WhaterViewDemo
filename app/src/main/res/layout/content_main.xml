@@ -18,6 +18,7 @@
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="10dp"
         android:text="添加"
         />
 
@@ -27,15 +28,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:elevation="2dp"
         android:text="删除"
         />
 
-    <com.sight.water.whaterviewdemo.WaterView
+    <com.sight.water.whaterviewdemo.view.WaterView
         android:id="@+id/vi_water"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_add"
         android:layout_marginTop="@dimen/view_margin_20"
+        android:elevation="20dp"
         app:left_tip="这是副标题"
         app:left_tip_color="@color/colorPrimary"
         app:left_title="这是标题"
@@ -45,17 +48,28 @@
         />
 
 
-    <com.sight.water.whaterviewdemo.WaterLinearLayout
+    <com.sight.water.whaterviewdemo.view.WaterLinearLayout
         android:id="@+id/vi_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/vi_water"
+        android:layout_marginTop="@dimen/view_margin_20"
+        android:orientation="vertical"
         app:icon_src="@mipmap/icon_blue_unselected_grey"
         app:line_color="@color/line_gray"
         app:line_dynamic_dimen="25dp"
-        android:orientation="vertical"
-        android:layout_below="@+id/vi_water"
-        android:layout_marginTop="@dimen/view_margin_20"
         />
+
+
+    <com.sight.water.whaterviewdemo.view.WaterListView
+        android:id="@+id/vi_lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vi_layout"
+        android:visibility="gone"
+        />
+
+
 
 
 </RelativeLayout>

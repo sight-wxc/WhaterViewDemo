@@ -41,4 +41,17 @@ public class BaseMsg
     {
         this.title = title;
     }
+
+
+    public BaseMsg(String timeS, String timeE, String title)
+    {
+        this.timeS = timeS;
+        this.timeE = timeE;
+        this.title = title;
+    }
+
+    public BaseMsg()
+    {
+
+    }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.sight.water.whaterviewdemo"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.sight.water.whaterviewdemo">
 
     <application
         android:allowBackup="true"
@@ -17,6 +17,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".VisetActivity"
+            android:label="@string/title_activity_viset"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".HeartActivity">
         </activity>
     </application>
 

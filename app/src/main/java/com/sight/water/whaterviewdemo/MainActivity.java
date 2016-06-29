@@ -1,5 +1,7 @@
 package com.sight.water.whaterviewdemo;
 
+import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,10 +10,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.sight.water.whaterviewdemo.util.ResourcesCompat;
+import com.sight.water.whaterviewdemo.view.WaterLinearLayout;
+import com.sight.water.whaterviewdemo.view.WaterListView;
+import com.sight.water.whaterviewdemo.view.WaterView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
@@ -20,24 +31,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnAdd;
     Button btnDelete;
     /**
-     *自定义View
+     * 自定义View
      * 在项目经常看到这样的item
-     *
      */
     WaterView waterView;
     /**
-     *自定义View
-     *时间轴 ~~改写了下
+     * 自定义View
+     * 时间轴 ~~改写了下
      */
     WaterLinearLayout waterLayout;
 
+    DemoAdpter demoAdpter;
+
+    List<BaseMsg> message = new ArrayList<>();
+
+    WaterListView waterListView;
+
+    private int firstY;
+    private int currentY;
+
+    private boolean isDown;
+    private boolean isShow;
+
+    private ObjectAnimator mAnimator;
+
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
@@ -45,6 +70,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnDelete = (Button) findViewById(R.id.btn_detele);
         waterView = (WaterView) findViewById(R.id.vi_water);
         waterLayout = (WaterLinearLayout) findViewById(R.id.vi_layout);
+        waterListView = (WaterListView) findViewById(R.id.vi_lv);
+
+
+
 
         btnDelete.setOnClickListener(this);
         btnAdd.setOnClickListener(this);
@@ -59,9 +88,73 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View view)
             {
 
+                startActivity(new Intent(getApplicationContext(), HeartActivity.class));
                 Toast.makeText(MainActivity.this, "我还没开发完呢，提啥需求", Toast.LENGTH_LONG).show();
             }
         });
+
+
+        for (int i = 0; i < 30; i++) {
+            message.add(new BaseMsg("时间", "地点", "391335693"));
+        }
+        demoAdpter = new DemoAdpter(message);
+        waterListView.setAdapter(demoAdpter);
+
+
+        waterListView.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        firstY = (int) event.getY();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        currentY = (int) event.getY();
+                        if (firstY - currentY > 0) {
+                            isDown = true;
+                        } else {
+                            isDown = false;
+                        }
+                        if (isDown) {
+                            if (isShow) {
+                                showHideAnimation(false);
+                                isShow = !isShow;
+                            }
+                        } else {
+                            if (!isShow) {
+                                showHideAnimation(true);
+                                isShow = true;
+                            }
+                        }
+
+                        break;
+                    case MotionEvent.ACTION_UP:
+
+                        break;
+                }
+
+
+                return false;
+            }
+        });
+    }
+
+
+    //显示隐藏ListView的方法
+    private void showHideAnimation(boolean flag)
+    {
+        if (mAnimator != null && mAnimator.isRunning()) {
+            mAnimator.cancel();
+        }
+        if (flag) {
+            mAnimator = ObjectAnimator.ofFloat(toolbar, "translationY", toolbar.getTranslationY(), 0);
+        } else {
+            mAnimator = ObjectAnimator.ofFloat(toolbar, "translationY", toolbar.getTranslationY(), -toolbar.getHeight());
+        }
+        mAnimator.start();
+        ;
     }
 
 
@@ -116,19 +209,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 {
                     Toast.makeText(MainActivity.this, "我还没开发完呢，提啥需求", Toast.LENGTH_LONG).show();
                 }
-            },0);
+            }, 0);
 
-            addSubItem("2016.6.22","你很帅！！QQ:391335693 ");
-
+            addSubItem("2016.6.22", "你很帅！！QQ:391335693 ");
 
 
         } else {
             //这里设置 左边的为空
             waterView.setLeftIcon(0);
             waterView.setRightIconNull();
-            int child =waterLayout.getChildCount();
-            if (child>0){
-                waterLayout.removeViewAt(child-1);
+            int child = waterLayout.getChildCount();
+            if (child > 0) {
+                waterLayout.removeViewAt(child - 1);
             }
 
 
